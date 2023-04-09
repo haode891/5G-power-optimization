@@ -16,7 +16,8 @@ for k=1:K
     % VEC. column k of h
     hk = h(:,k);
     % Num. of CSI
-    Num = abs(ck * hk)^2;
+    %Num = abs(ck * hk)^2;
+    Num = norm(ck)^2;
     % Den. of CSI without Interference
     Den = PowerNoise * norm(ck)^2;
     
@@ -25,7 +26,8 @@ for k=1:K
         for j=1:K
             if j~=k
                 hj = h(:,j);
-                Den = Den + Power(j) * abs(ck * hj)^2;
+                %Den = Den + Power(j) * abs(ck * hj)^2;
+                Den = Den + Power(j) *  norm(hj)^2
             end
         end
     end
